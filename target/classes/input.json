@@ -1,0 +1,17 @@
+[
+    {
+      "testid" : "test1",
+      "username": "standard_user",
+      "password" : "secret_sauce",
+      "operation" : "loginOK",
+      "executable" : true
+    },
+
+  {
+    "testid" : "test2",
+    "username": "error_user",
+    "password" : "secret_sauce",
+    "operation" : "error",
+    "executable" : true
+  }
+]
