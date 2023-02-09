@@ -16,11 +16,13 @@ import static org.junit.Assert.fail;
 
 public class Main {
 
-	private static final String CHROMEDRIVER = "D://webDrivers//resources//chromedriver108//chromedriver.exe";
+	private static final String CHROMEDRIVER = "D://webDrivers//resources//chromedriver110//chromedriver.exe";
 	private static final String PATH = "https://www.saucedemo.com/";
 
 	public static void main( String[] args ){
 		System.setProperty("logfilename", "Execution");
+		System.setProperty("logfilepath", "D:\\workshop\\ejemploSelenium\\Login\\selenium\\target\\output\\");
+
 		List<Test> tests = readJson();
 
 		for (Test test : tests) {
