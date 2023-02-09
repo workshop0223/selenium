@@ -16,12 +16,11 @@ import static org.junit.Assert.fail;
 
 public class Main {
 
-	private static final String CHROMEDRIVER = "D://webDrivers//resources//chromedriver110//chromedriver.exe";
+	private static final String CHROMEDRIVER = "D://webDrivers//resources//chromedriver108//chromedriver.exe";
 	private static final String PATH = "https://www.saucedemo.com/";
 
 	public static void main( String[] args ){
-		System.setProperty("logfilename", "Execution");
-		System.setProperty("logfilepath", "D:\\workshop\\ejemploSelenium\\Login\\selenium\\target\\output\\");
+		System.setProperty("logfilepath", "target\\output\\");
 
 		List<Test> tests = readJson();
 
@@ -34,6 +33,8 @@ public class Main {
 
 	@org.junit.Test
 	private static void executeTest(Test test){
+		System.setProperty("logfilename", test.getTestid());
+
 		WebDriver driver = getDriver();
 
 		driver.get(PATH);

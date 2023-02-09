@@ -11,7 +11,6 @@ public class LoginPage {
 	static Logger log = Logger.getLogger(LoginPage.class);
 
 	public LoginPage(WebDriver driver, Test test) {
-		System.setProperty("logfilename", test.getTestid());
 		PropertyConfigurator.configure("src\\main\\resources\\log4j.properties");
 
 		this.driver = driver;
