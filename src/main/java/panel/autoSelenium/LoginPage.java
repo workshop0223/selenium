@@ -1,17 +1,15 @@
 package panel.autoSelenium;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 	private final WebDriver driver;
-	private final Test test;
+	private final TestData test;
 	static Logger log = Logger.getLogger(LoginPage.class);
 
-	public LoginPage(WebDriver driver, Test test) {
-		PropertyConfigurator.configure("src\\main\\resources\\log4j.properties");
+	public LoginPage(WebDriver driver, TestData test) {
 
 		this.driver = driver;
 		this.test = test;

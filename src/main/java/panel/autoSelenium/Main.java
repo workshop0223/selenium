@@ -7,33 +7,34 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import org.apache.log4j.PropertyConfigurator;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.junit.Assert.*;
 
 import static org.junit.Assert.fail;
 
 public class Main {
 
-	private static final String CHROMEDRIVER = "D://webDrivers//resources//chromedriver108//chromedriver.exe";
+	private static final String CHROMEDRIVER = "D://webDrivers//resources//chromedriver110//chromedriver.exe";
 	private static final String PATH = "https://www.saucedemo.com/";
+	private static final String LOG_PROPERTIES = "src\\main\\resources\\log4j.properties";
 
 	public static void main( String[] args ){
 		System.setProperty("logfilepath", "target\\output\\");
 
-		List<Test> tests = readJson();
+		List<TestData> tests = readJson();
 
-		for (Test test : tests) {
+		for (TestData test : tests) {
 			executeTest(test);
 		}
-
-
 	}
 
-	@org.junit.Test
-	private static void executeTest(Test test){
+	@Test
+	private static void executeTest(TestData test){
 		System.setProperty("logfilename", test.getTestid());
+		PropertyConfigurator.configure(LOG_PROPERTIES);
 
 		WebDriver driver = getDriver();
 
@@ -50,7 +51,7 @@ public class Main {
 	}
 
 
-	private static List<Test> readJson() {
+	private static List<TestData> readJson() {
 		Gson gson = new Gson();
 		JsonReader reader = null;
 		try {
@@ -58,7 +59,7 @@ public class Main {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		Test[] tests = gson.fromJson(reader, Test[].class);
+		TestData[] tests = gson.fromJson(reader, TestData[].class);
 		return Arrays.asList(tests);
 	}
 
