@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Date;
+
 public class LoginPage {
 	private final WebDriver driver;
 	private final TestData test;
@@ -16,6 +18,8 @@ public class LoginPage {
 	}
 	
 	public void execute() throws Exception {
+		logHeader();
+
 		log.info("Introducimos datos de acceso");
 		setUsername();
 		setPassword();
@@ -36,6 +40,17 @@ public class LoginPage {
 		else{
 			setError();
 		}
+	}
+
+	private void logHeader() {
+		log.info("___________________________________________");
+		log.info("___________________________________________");
+		log.info("Iniciando test " + test.getTestid());
+		log.info("Fecha: " + new Date());
+		log.info("Tipo de operación: " + test.getOperation());
+		log.info("___________________________________________");
+		log.info("___________________________________________");
+		log.info("");
 	}
 
 	private void setError() throws Exception {

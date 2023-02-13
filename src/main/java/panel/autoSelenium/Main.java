@@ -27,7 +27,9 @@ public class Main {
 		List<TestData> tests = readJson();
 
 		for (TestData test : tests) {
-			executeTest(test);
+			if (test.isExecutable()){
+				executeTest(test);
+			}
 		}
 	}
 
